@@ -1,42 +1,34 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import { fetchAllContacts } from 'redux/contacts/contacts-operation';
-import { getFilteredContacts } from 'redux/contacts/contacts-selecrors';
+import { fetchAllContacts } from 'redux/contacts/contactsOperations';
+import { selectFilteredContacts } from 'redux/contacts/contactsSelectors';
 
+import { ContactListItem } from './ContactListItem/ContactListItem';
 import styles from './ContactList.module.css';
-import ContactItem from 'components/ContactItem/ContactItem';
 
-const ContactList = () => {
+export const ContactList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllContacts());
   }, [dispatch]);
 
-  const contactsList = useSelector(getFilteredContacts);
+  const list = useSelector(selectFilteredContacts);
+  const isContacts = Boolean(list.length);
 
   return (
-    <ul className={styles.list}>
-      {contactsList.map(({ id, name, number }) => {
-        return <ContactItem key={id} id={id} name={name} number={number} />;
-      })}
-    </ul>
+    <div className={styles.contactList}>
+      {isContacts && (
+        <ul className={styles.ul}>
+          {list.map(({ id, name, number }) => {
+            return (
+              <ContactListItem key={id} name={name} number={number} id={id} />
+            );
+          })}
+        </ul>
+      )}
+      {!isContacts && <p className={styles.text}>There are no contacts!</p>}
+    </div>
   );
 };
-
-export default ContactList;
-
-ContactList.prototypes = {
-  onDeleteClick: PropTypes.func,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-};
-
-//  loading && <Loader />;

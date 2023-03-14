@@ -1,4 +1,6 @@
-export const getFilteredContacts = ({ contacts, filter }) => {
+export const selectAllContacts = ({ contacts }) => contacts.items;
+
+export const selectFilteredContacts = ({ contacts, filter }) => {
   if (!filter) {
     return contacts.items;
   }
@@ -11,4 +13,4 @@ export const getFilteredContacts = ({ contacts, filter }) => {
   return result;
 };
 
-export const getLoading = state => state.contacts.loading;
+export const selectLoadingContacts = ({ contacts }) => contacts.isLoading;

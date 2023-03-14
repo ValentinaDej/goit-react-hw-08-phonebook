@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+
+import { setFilter } from 'redux/filter/filterSlice';
+import { selectFilter } from 'redux/filter/filterSelectors';
 
 import LabelInput from 'shared/LabelInput/LabelInput';
 import styles from './Filter.module.css';
-import { setFilter } from 'redux/filter/filterSlice';
 
-const Filter = () => {
-  const filter = useSelector(store => store.filter);
+export const Filter = () => {
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const handleFilter = e => {
@@ -25,10 +26,4 @@ const Filter = () => {
       />
     </div>
   );
-};
-
-export default Filter;
-
-Filter.prototypes = {
-  handleChange: PropTypes.func,
 };

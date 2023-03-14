@@ -1,54 +1,54 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
+  fetchAllContacts,
   fetchAddContact,
   fetchDeleteContact,
-  fetchAllContacts,
-} from './contacts-operation';
-
-const initialState = {
-  items: [],
-  loading: false,
-  error: null,
-};
+} from './contactsOperations';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState,
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchAllContacts.pending, store => {
-        store.loading = true;
+        store.isLoading = true;
+        store.error = null;
       })
       .addCase(fetchAllContacts.fulfilled, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.items = payload;
       })
       .addCase(fetchAllContacts.rejected, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.error = payload;
       })
       .addCase(fetchAddContact.pending, store => {
-        store.loading = true;
+        store.isLoading = true;
+        store.error = null;
       })
       .addCase(fetchAddContact.fulfilled, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.items.push(payload);
       })
       .addCase(fetchAddContact.rejected, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.error = payload;
       })
       .addCase(fetchDeleteContact.pending, store => {
-        store.loading = true;
+        store.isLoading = true;
+        store.error = null;
       })
       .addCase(fetchDeleteContact.fulfilled, (store, { payload }) => {
-        store.loading = false;
-        const index = store.items.findIndex(item => item.id === payload);
-        store.items.splice(index, 1);
+        store.isLoading = false;
+        store.items = store.items.filter(item => item.id !== payload);
       })
       .addCase(fetchDeleteContact.rejected, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.error = payload;
       });
   },

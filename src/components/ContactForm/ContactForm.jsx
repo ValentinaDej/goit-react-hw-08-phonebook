@@ -1,20 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import PropTypes from 'prop-types';
+import { fetchAddContact } from 'redux/contacts/contactsOperations';
+import { selectLoadingContacts } from 'redux/contacts/contactsSelectors';
 
 import Button from 'shared/Button/Button';
 import LabelInput from 'shared/LabelInput/LabelInput';
 import Loader from 'components/Loader/Loader';
-import { getLoading } from 'redux/contacts/contacts-selecrors';
-
-import { fetchAddContact } from 'redux/contacts/contacts-operation';
-
-import styles from './ContactFofm.module.css';
-
 import initialState from './initialState';
+import styles from './ContactForm.module.css';
 
-const ContactForm = () => {
+export const ContactForm = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoadingContacts);
+
+  const handleAddContact = data => {
+    const name = data.name;
+    const number = data.number;
+    dispatch(fetchAddContact({ name, number }));
+  };
 
   const onChangingInput = e => {
     const objectKey = e.target.name;
@@ -22,20 +25,14 @@ const ContactForm = () => {
     return;
   };
 
-  const handleAddContact = ({ name, number }) => {
-    dispatch(fetchAddContact({ name, number }));
-  };
-
   const clearForm = e => {
     e.target.elements.name.value = '';
     e.target.elements.number.value = '';
   };
 
-  const loading = useSelector(getLoading);
-
   return (
     <form
-      className={styles.сontactForm}
+      className={styles.form}
       onSubmit={e => {
         e.preventDefault();
         handleAddContact(initialState);
@@ -64,10 +61,4 @@ const ContactForm = () => {
       {loading && <Loader />}
     </form>
   );
-};
-
-export default ContactForm;
-
-ContactForm.prototypes = {
-  onHandleSubmit: PropTypes.func.isRequired,
 };
