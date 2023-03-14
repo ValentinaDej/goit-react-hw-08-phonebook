@@ -5,6 +5,7 @@ import { signup } from 'redux/auth/authOperations';
 import { isUserLogin } from 'redux/auth/authSelectors';
 
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import styles from './reisterPage.module.css';
 
 const RegisterPage = () => {
   const isLogin = useSelector(isUserLogin);
@@ -19,7 +20,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <RegisterForm onSubmit={handleSignup} />
     </div>
   );

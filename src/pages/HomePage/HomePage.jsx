@@ -1,5 +1,10 @@
+import styles from './HomePage.module.css';
 const HomePage = () => {
-  return <p>Welcome to Phonebook!</p>;
+  return (
+    <div className={styles.container}>
+      <p className={styles.text}>Welcome to Phonebook!</p>
+    </div>
+  );
 };
 
 export default HomePage;

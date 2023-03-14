@@ -6,7 +6,7 @@ import styles from 'components/Layout/Layout.module.css';
 
 export const Layout = () => {
   return (
-    <div className={styles.layout}>
+    <div className={styles.mainBody}>
       <header className={styles.header}>
         <Navbar />
       </header>

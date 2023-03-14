@@ -5,6 +5,7 @@ import { login } from 'redux/auth/authOperations';
 import { isUserLogin } from 'redux/auth/authSelectors';
 
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import styles from './loginPage.module.css';
 
 const LoginPage = () => {
   const isLogin = useSelector(isUserLogin);
@@ -18,7 +19,7 @@ const LoginPage = () => {
     return <Navigate to="/contacts" />;
   }
   return (
-    <div>
+    <div className={styles.container}>
       <LoginForm onSubmit={handleSignup} />
     </div>
   );

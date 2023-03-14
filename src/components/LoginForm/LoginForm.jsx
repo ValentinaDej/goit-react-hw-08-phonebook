@@ -42,7 +42,7 @@ export const LoginForm = ({ onSubmit }) => {
         value={password}
         {...fields.password}
       />
-      <Button title=" Log in" type="submit" />
+      <Button title="Log in" type="submit" />
     </form>
   );
 };
