@@ -12,6 +12,7 @@ export const NavbarUser = () => {
   const onLogout = () => {
     dispatch(logout());
   };
+
   return (
     <div className={styles.navbarUser}>
       <p className={styles.email}>{email}</p>

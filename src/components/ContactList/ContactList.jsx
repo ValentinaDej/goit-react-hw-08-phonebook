@@ -18,7 +18,7 @@ export const ContactList = () => {
   const isContacts = Boolean(list.length);
 
   return (
-    <div className={styles.contactList}>
+    <div className={styles.form}>
       {isContacts && (
         <ul className={styles.ul}>
           {list.map(({ id, name, number }) => {

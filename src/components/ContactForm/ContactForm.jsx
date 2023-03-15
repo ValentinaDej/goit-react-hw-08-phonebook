@@ -39,6 +39,7 @@ export const ContactForm = () => {
         clearForm(e);
       }}
     >
+      <h2 className={styles.title}>Contacts</h2>
       <LabelInput
         caption="Name"
         onChange={onChangingInput}

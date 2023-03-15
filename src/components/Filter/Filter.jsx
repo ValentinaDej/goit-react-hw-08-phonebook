@@ -16,7 +16,7 @@ export const Filter = () => {
   };
 
   return (
-    <div className={styles.ContactForm}>
+    <div className={styles.form}>
       <LabelInput
         caption="Find contacts by name"
         type="text"

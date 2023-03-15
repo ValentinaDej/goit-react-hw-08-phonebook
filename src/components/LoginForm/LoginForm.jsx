@@ -30,6 +30,7 @@ export const LoginForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
+      <h2 className={styles.title}>Please, input your login data</h2>
       <LabelInput
         caption="Email"
         onChange={handleChange}

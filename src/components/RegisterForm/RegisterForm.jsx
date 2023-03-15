@@ -28,9 +28,9 @@ export const RegisterForm = ({ onSubmit }) => {
   };
 
   const { name, email, password } = state;
-
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
+      <h2 className={styles.title}>Please, input your registration data</h2>
       <LabelInput
         caption="Name"
         onChange={handleChange}
