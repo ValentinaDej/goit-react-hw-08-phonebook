@@ -1,17 +1,22 @@
-import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-import { NavbarAuth } from './NavbarAuth/NavbarAuth';
-import { NavbarUser } from './NavbarUser/NavbarUser';
-
-import { isUserLogin } from 'redux/auth/authSelectors';
+import styles from 'components/Navbar/Navbar.module.css';
 
 export const Navbar = () => {
-  const isLogin = useSelector(isUserLogin);
-
   return (
     <div>
-      {!isLogin && <NavbarAuth />}
-      {isLogin && <NavbarUser />}
+      <NavLink to="/shop" className={styles.link}>
+        Shop
+      </NavLink>
+      <NavLink to="/cart" className={styles.link}>
+        Cart
+      </NavLink>
+      <NavLink to="/history" className={styles.link}>
+        History
+      </NavLink>
+      <NavLink to="/cupons" className={styles.link}>
+        Cupons
+      </NavLink>
     </div>
   );
 };

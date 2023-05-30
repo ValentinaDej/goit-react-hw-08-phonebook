@@ -1,34 +1,34 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchAllContacts } from 'redux/contacts/contactsOperations';
-import { selectFilteredContacts } from 'redux/contacts/contactsSelectors';
+// import { fetchAllContacts } from 'redux/contacts/contactsOperations';
+// import { selectFilteredContacts } from 'redux/contacts/contactsSelectors';
 
-import { ContactListItem } from './ContactListItem/ContactListItem';
-import styles from './ContactList.module.css';
+// import { ContactListItem } from './ContactListItem/ContactListItem';
+// import styles from './ContactList.module.css';
 
-export const ContactList = () => {
-  const dispatch = useDispatch();
+// export const ContactList = () => {
+//   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchAllContacts());
-  }, [dispatch]);
+//   useEffect(() => {
+//     dispatch(fetchAllContacts());
+//   }, [dispatch]);
 
-  const list = useSelector(selectFilteredContacts);
-  const isContacts = Boolean(list.length);
+//   const list = useSelector(selectFilteredContacts);
+//   const isContacts = Boolean(list.length);
 
-  return (
-    <div className={styles.form}>
-      {isContacts && (
-        <ul className={styles.ul}>
-          {list.map(({ id, name, number }) => {
-            return (
-              <ContactListItem key={id} name={name} number={number} id={id} />
-            );
-          })}
-        </ul>
-      )}
-      {!isContacts && <p className={styles.text}>There are no contacts!</p>}
-    </div>
-  );
-};
+//   return (
+//     <div className={styles.form}>
+//       {isContacts && (
+//         <ul className={styles.ul}>
+//           {list.map(({ id, name, number }) => {
+//             return (
+//               <ContactListItem key={id} name={name} number={number} id={id} />
+//             );
+//           })}
+//         </ul>
+//       )}
+//       {!isContacts && <p className={styles.text}>There are no contacts!</p>}
+//     </div>
+//   );
+// };

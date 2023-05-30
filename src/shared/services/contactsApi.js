@@ -1,4 +1,4 @@
-import { instance } from './authApi';
+import { instance } from './instance';
 
 export const getAllContacts = async () => {
   const { data } = await instance.get('/contacts/');
